@@ -1,0 +1,52 @@
+[
+  {
+    "QuestionStr": "Mit welcher Technologie wurde diese Webseite gebaut.",
+    "Selections": [
+      "Php",
+      "Pdf",
+      "Java",
+      "Python",
+      "C++",
+      "Usb",
+      "Asp.net",
+      "Plain Html"
+    ],
+    "Answere": "Asp.net",
+    "Type": "0"
+  },
+  {
+    "QuestionStr": "Frage 2",
+    "Selections": [
+      "Auswahlmöglichkeit 1",
+      "Auswahlmöglichkeit 2",
+      "Auswahlmöglichkeit 3",
+      "Auswahlmöglichkeit 4"
+    ],
+    "Answere": "Auswahlmöglichkeit 2",
+    "Type": "1",
+    "Image": "ImageLink"
+  },
+  {
+    "QuestionStr": "Frage 3",
+    "Selections": [
+      "Auswahlmöglichkeit 1",
+      "Auswahlmöglichkeit 2",
+      "Auswahlmöglichkeit 3",
+      "Auswahlmöglichkeit 4"
+    ],
+    "Answere": "Auswahlmöglichkeit 3",
+    "Type": "2",
+    "Video": "Videolink"
+  },
+  {
+    "QuestionStr": "Frage 4",
+    "Selections": [
+      "Auswahlmöglichkeit 1",
+      "Auswahlmöglichkeit 2",
+      "Auswahlmöglichkeit 3",
+      "Auswahlmöglichkeit 4"
+    ],
+    "Answere": "Auswahlmöglichkeit 4",
+    "Type": "0"
+  },
+]

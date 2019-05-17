@@ -1,0 +1,29 @@
+﻿@model Question
+@using BootstrapWebseite.Data.Classes
+@{
+    ViewBag.Title = "Question";
+}
+<script>
+    function SetAnswere() {
+        return $("input[name=RadioButtons]:checked").val();
+    }
+
+    function LoadAnswere() {
+        if (Answeres["Question" + CurrentQuestion] != null)
+            $("input[name=RadioButtons][value='" + Answeres["Question" + CurrentQuestion] + "']").attr("checked", "checked");
+    }
+</script>
+<div class="row">
+    <div class="col-md-6">@Model.QuestionStr</div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @foreach (string answere in Model.Selections)
+        {
+        <div class="radio">
+            <label><input type="radio" class="" name="RadioButtons" value="@answere" />@answere</label>
+        </div>
+        }
+    </div>
+</div>
+

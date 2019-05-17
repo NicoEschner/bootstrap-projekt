@@ -7,7 +7,6 @@
 <script>
     var Progress = 0;
     var CurrentQuestion = 1;
-    var CurrentQuestionAnswere = "";
     var QuestionCount = @Model.QuestionCount;
     var Answeres = new Object();
 
@@ -16,7 +15,15 @@
     })
 
     function SetProgression() {
-        var progression = Math.ceil(CurrentQuestion / QuestionCount);
+        var progression = Math.ceil((CurrentQuestion - 1) / QuestionCount * 100);
+        if (CurrentQuestion == 1) {
+            progression = 0;
+            $("#progress_bar").css("color", "black");
+        } else {
+            if ($("#progress_bar").css("color") == "rgb(0, 0, 0)") {
+                $("#progress_bar").css("color", "white");
+            }
+        }
         $("#progress_bar").css("width", progression + "%").text(progression + "%");
     }
 
@@ -33,7 +40,38 @@
     }
 
     function SaveAnsweres() {
-        Answeres["Question" + CurrentQuestion] = CurrentQuestionAnswere;
+        try {
+            Answeres["Question" + CurrentQuestion] = SetAnswere();
+        } catch (ex) {}
+    }
+
+    function SetActivePage() {
+        $(".page-item.active").removeClass("active");
+        $("#page_question_" + CurrentQuestion).addClass("active");
+    }
+
+    function CheckPrevNextButton() {
+        if (CurrentQuestion == 1) {
+            $("#previous_page").addClass("disabled");
+        } else if ($("#previous_page").hasClass("disabled")) {
+            $("#previous_page").removeClass("disabled");
+        }
+
+        if (CurrentQuestion == QuestionCount) {
+            $("#next_page").addClass("disabled");
+        } else if ($("#next_page").hasClass("disabled")) {
+            $("#next_page").removeClass("disabled");
+        }
+    }
+
+    function UpdateUi(data) {
+        $("#test_body").empty();
+        $("#test_body").html(data);
+        $("#question_count").html(CurrentQuestion);
+        SetProgression();
+        SetActivePage();
+        CheckPrevNextButton();
+        LoadAnswere();
     }
 
     function LoadQuestion(number) {
@@ -44,9 +82,7 @@
             success: function (data) {
                 SaveAnsweres();
                 CurrentQuestion = number;
-                $("#test_body").empty();
-                $("#test_body").html(data);
-                SetProgression();
+                UpdateUi(data);
             },
             error: function (data) {
                 alert("Fehler beim Laden der Frage Nr." + number);
@@ -54,21 +90,23 @@
         });
     }
 </script>
-<h2>Test</h2>
+<h2>Test zum Thema XYZ</h2>
 <hr />
 <div class="progress">
-    <div id="progress_bar" class="progress-bar" style="width:0%">0%</div>
+    <div id="progress_bar" class="progress-bar progress-bar-striped active" style="width:0%">0%</div>
 </div>
 <br />
+<br />
+<h3>Frage <span id="question_count"></span></h3>
 <br />
 <div id="test_body">
-    
+
 </div>
 <ul class="pagination">
-    <li class="page-item"><a class="page-link" onclick="PreviosQuestion()">Previous</a></li>
+    <li class="page-item" id="previous_page"><a class="page-link" onclick="PreviosQuestion()" href="#">Previous</a></li>
     @for (int i = 1; i <= Model.QuestionCount; i++)
     {
-    <li class="page-item"><a class="page-link" onclick="LoadQuestion(@i)">@i</a></li>
+        <li class="page-item" id="page_question_@i"><a class="page-link" onclick="LoadQuestion(@i)" href="#">@i</a></li>
     }
-    <li class="page-item"><a class="page-link" onclick="NextQuestion()">Next</a></li>
+    <li class="page-item" id="next_page"><a class="page-link" onclick="NextQuestion()" href="#">Next</a></li>
 </ul> 
