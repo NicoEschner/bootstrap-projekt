@@ -1,0 +1,52 @@
+﻿@model TestModel
+@using BootstrapWebseite.Models
+@{
+    ViewBag.Title = "Test";
+}
+
+<script>
+    var Progress = 0;
+    var CurrentQuestion = 1;
+
+    $(document).ready(function () {
+
+    })
+
+    function SetPage(page) {
+        //TODO
+        SetProgression()
+    }
+
+    function SetProgression() {
+        var progression = Math.ceil(CurrentQuestion / @Model.QuestionCount);
+        $("#progress_bar").css("width", progression + "%").text(progression + "%");
+    }
+
+    function NextQuestion() {
+        //TODO
+        SetProgression()
+    }
+
+    function PreviosQuestion() {
+        //TODO
+        SetProgression()
+    }
+</script>
+<h2>Test</h2>
+<hr />
+<div class="progress">
+    <div id="progress_bar" class="progress-bar" style="width:0%">0%</div>
+</div>
+<br />
+<br />
+<div id="test_body">
+    
+</div>
+<ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    @for (int i = 1; i <= Model.QuestionCount; i++)
+    {
+    <li class="page-item"><a class="page-link" onclick="SetPage(@i)">@i</a></li>
+    }
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+</ul> 
