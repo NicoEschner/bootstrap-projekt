@@ -34,9 +34,9 @@ namespace BootstrapWebseite.Controllers
                 case QuestionType.Normal:
                     return PartialView("Questions/Question", ((JObject)questions[number]).ToObject<Question>());
                 case QuestionType.Image:
-                    return PartialView("ImageQuestion", ((JObject)questions[number]).ToObject<ImageQuestion>());
+                    return PartialView("Questions/ImageQuestion", ((JObject)questions[number]).ToObject<ImageQuestion>());
                 case QuestionType.Video:
-                    return PartialView("VideoQuestion", ((JObject)questions[number]).ToObject<VideoQuestion>());
+                    return PartialView("Questions/VideoQuestion", ((JObject)questions[number]).ToObject<VideoQuestion>());
                 default:
                     break;
             }

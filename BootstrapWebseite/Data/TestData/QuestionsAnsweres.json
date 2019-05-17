@@ -1,6 +1,6 @@
 [
   {
-    "QuestionStr": "Mit welcher Technologie wurde diese Webseite gebaut.",
+    "QuestionStr": "Mit welcher Technologie wurde diese Webseite gebaut?",
     "Selections": [
       "Php",
       "Pdf",
@@ -15,16 +15,16 @@
     "Type": "0"
   },
   {
-    "QuestionStr": "Frage 2",
+    "QuestionStr": "Von welchem Hersteller ist diese Cpu?",
     "Selections": [
-      "Auswahlmöglichkeit 1",
-      "Auswahlmöglichkeit 2",
-      "Auswahlmöglichkeit 3",
-      "Auswahlmöglichkeit 4"
+      "Intel",
+      "Nvidia",
+      "Amd",
+      "Gtx"
     ],
     "Answere": "Auswahlmöglichkeit 2",
     "Type": "1",
-    "Image": "ImageLink"
+    "ImageAddress": "/Data/TestData/Images/i9cpu.jpg"
   },
   {
     "QuestionStr": "Frage 3",
@@ -36,7 +36,7 @@
     ],
     "Answere": "Auswahlmöglichkeit 3",
     "Type": "2",
-    "Video": "Videolink"
+    "VideoAddress": "https://www.youtube.com/embed/F7Ex-ubaU6A?rel=0"
   },
   {
     "QuestionStr": "Frage 4",
@@ -48,5 +48,5 @@
     ],
     "Answere": "Auswahlmöglichkeit 4",
     "Type": "0"
-  },
+  }
 ]

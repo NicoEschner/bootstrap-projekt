@@ -71,6 +71,7 @@
         SetProgression();
         SetActivePage();
         CheckPrevNextButton();
+        ShowOrHideSubmitBtn();
         LoadAnswere();
     }
 
@@ -89,6 +90,16 @@
             }
         });
     }
+
+    function ShowOrHideSubmitBtn() {
+        if (CurrentQuestion == QuestionCount) {
+            $("#submit_btn").css("visibility", "visible");
+        } else {
+            if ($("#submit_btn").css("visibility") != "collapse") {
+                $("#submit_btn").css("visibility", "collapse");
+            }
+        }
+    }
 </script>
 <h2>Test zum Thema XYZ</h2>
 <hr />
@@ -102,11 +113,14 @@
 <div id="test_body">
 
 </div>
-<ul class="pagination">
-    <li class="page-item" id="previous_page"><a class="page-link" onclick="PreviosQuestion()" href="#">Previous</a></li>
-    @for (int i = 1; i <= Model.QuestionCount; i++)
-    {
-        <li class="page-item" id="page_question_@i"><a class="page-link" onclick="LoadQuestion(@i)" href="#">@i</a></li>
-    }
-    <li class="page-item" id="next_page"><a class="page-link" onclick="NextQuestion()" href="#">Next</a></li>
-</ul> 
+<div class="row">
+    <ul class="pagination">
+        <li class="page-item" id="previous_page"><a class="page-link" onclick="PreviosQuestion()" href="#">Previous</a></li>
+        @for (int i = 1; i <= Model.QuestionCount; i++)
+        {
+            <li class="page-item" id="page_question_@i"><a class="page-link" onclick="LoadQuestion(@i)" href="#">@i</a></li>
+        }
+        <li class="page-item" id="next_page"><a class="page-link" onclick="NextQuestion()" href="#">Next</a></li>
+    </ul>
+    <button type="button" class="btn btn-success" style="float: right; visibility:collapse" id="submit_btn">Test Abschließen</button>
+</div>
